@@ -1,0 +1,39 @@
+.header {
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);    
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+    padding-bottom: 23px;
+}
+.header__content-header {
+    color: #111517;
+    font-family: Nunito Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    margin: 0;    
+}
+.header__content-parag {
+    color: #111517;
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;    
+    display: flex;
+}
+
+.header__content-parag::before{
+    display: block;
+    content: "";
+    background-image: url("../img/dark.svg");
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
