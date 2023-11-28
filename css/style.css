@@ -9,8 +9,8 @@
   padding: 0;
   list-style: none;
   display: flex;
+  gap: 75px;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-top: 48px;
 }
 
