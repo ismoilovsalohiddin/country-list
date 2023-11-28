@@ -10426,13 +10426,22 @@ elInput.addEventListener("input", function(){
 const elSelect = document.querySelector(".form__selector")
 
 elSelect.addEventListener("change", function(event){
-  const newSelArr = []
-  countries.forEach(function(item){
+  const newSelArr = countries.filter(function(item){
     if(item.region.includes(event.target.value)){
-      newSelArr.push(item)
+      return item
     }
   })
   render(newSelArr)
 })
+
+// elSelect.addEventListener("change", function(event){
+//   const newSelArr = []
+//   countries.forEach(function(item){
+//     if(item.region.includes(event.target.value)){
+//       newSelArr.push(item)
+//     }
+//   })
+//   render(newSelArr)
+// })
 
 render(countries)
