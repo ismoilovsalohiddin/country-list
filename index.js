@@ -67,19 +67,29 @@ function render(param1){
 }
 
 elInput.addEventListener("input", function(){
-  // fetch(`https://restcountries.com/v3.1/name/${elInput.value.toLowerCase()}`).then((responsive) =>{
-  //   return responsive.json()
-  // }).then(data => {
-  //   data
-  //   render(data)
-  // })
-  const newArr = []
-  countries.forEach(function(item){
-    if(item.name.common.toLowerCase().includes(elInput.value.toLowerCase())){
-      newArr.push(item)
-    }
+  fetch(`https://restcountries.com/v3.1/name/${elInput.value.toLowerCase()}`).then((responsive) =>{
+    return responsive.json()
+  }).then(data => {
+    console.log(data)
+    data.forEach(function(item){
+      if(item.name.common.toLowerCase().includes(elInput.value.trim().toLowerCase())){
+        return(item)
+      }else{
+        const notFound = document.createElement("h1")
+        notFound.textContent = "Not Found"
+        notFound.setAttribute("class", "not-found")
+        body.appendChild(notFound)
+      }
+      })
+    render(data)
   })
-  render(newArr)
+  // const newArr = []
+  // countries.forEach(function(item){
+  //   if(item.name.common.toLowerCase().includes(elInput.value.toLowerCase())){
+  //     newArr.push(item)
+  //   }
+  // })
+  // render(newArr)
 })
 
 const elSelect = document.querySelector(".form__selector")
@@ -91,7 +101,7 @@ elSelect.addEventListener("change", function(event){
     render(data)
   })
 })
-
+  
 // elSelect.addEventListener("change", function(event){
 //   const newSelArr = []
 //   countries.forEach(function(item){
