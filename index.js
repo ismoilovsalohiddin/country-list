@@ -83,13 +83,6 @@ elInput.addEventListener("input", function(){
       })
     render(data)
   })
-  // const newArr = []
-  // countries.forEach(function(item){
-  //   if(item.name.common.toLowerCase().includes(elInput.value.toLowerCase())){
-  //     newArr.push(item)
-  //   }
-  // })
-  // render(newArr)
 })
 
 const elSelect = document.querySelector(".form__selector")
@@ -101,13 +94,3 @@ elSelect.addEventListener("change", function(event){
     render(data)
   })
 })
-  
-// elSelect.addEventListener("change", function(event){
-//   const newSelArr = []
-//   countries.forEach(function(item){
-//     if(item.region.includes(event.target.value)){
-//       newSelArr.push(item)
-//     }
-//   })
-//   render(newSelArr)
-// })
