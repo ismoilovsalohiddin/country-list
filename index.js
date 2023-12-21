@@ -1,8 +1,8 @@
-let countries = []
+const countries = []
 fetch("https://restcountries.com/v3.1/all").then((responsive) =>{
   return responsive.json()
 }).then(data => {
-  countries = data
+  countries.push(...data)
   render(data)
 } )
 let elList = document.querySelector(".countries__list")
@@ -36,7 +36,7 @@ function render(param1){
       countryDt1.textContent = "Population: "
       const countryDd1 = document.createElement("dd")
       countryDd1.setAttribute("class", "dd")
-      countryDd1.textContent = " 4.400.44"
+      countryDd1.textContent = country.population
     
       const countryDt2 = document.createElement("dt")
       countryDt2.setAttribute("class", "dt")
@@ -67,6 +67,12 @@ function render(param1){
 }
 
 elInput.addEventListener("input", function(){
+  // fetch(`https://restcountries.com/v3.1/name/${elInput.value.toLowerCase()}`).then((responsive) =>{
+  //   return responsive.json()
+  // }).then(data => {
+  //   data
+  //   render(data)
+  // })
   const newArr = []
   countries.forEach(function(item){
     if(item.name.common.toLowerCase().includes(elInput.value.toLowerCase())){
@@ -79,12 +85,11 @@ elInput.addEventListener("input", function(){
 const elSelect = document.querySelector(".form__selector")
 
 elSelect.addEventListener("change", function(event){
-  const newSelArr = countries.filter(function(item){
-    if(item.region.includes(event.target.value)){
-      return item
-    }
+  fetch(`https://restcountries.com/v3.1/region/${event.target.value}`).then((responsive) =>{
+    return responsive.json()
+  }).then(data => {
+    render(data)
   })
-  render(newSelArr)
 })
 
 // elSelect.addEventListener("change", function(event){
@@ -96,5 +101,3 @@ elSelect.addEventListener("change", function(event){
 //   })
 //   render(newSelArr)
 // })
-
-render(countries)
